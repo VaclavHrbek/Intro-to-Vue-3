@@ -7,7 +7,7 @@ const app = Vue.createApp({
             image: './assets/images/socks_blue.jpg',
             inStock: false,
             details: ['50% cotton', '30% wool', '20% polyester'],
-            onSale: 'On Sale!',
+            onSale: true,
             variants: [
               { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', onSale: true },
               { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', onSale: false },
@@ -30,7 +30,10 @@ const app = Vue.createApp({
             return this.brand + ' ' + this.product + ' ' + this.onSale
         },
         onSale() {
-            return this.variants.brand + ' ' + this.variants.product
+            if (this.variants.onSale) {
+                return this.brand + ' ' + this.product + ' ' + 'are on sale!'
+            }
+            return ' '
         }
     }
 })
